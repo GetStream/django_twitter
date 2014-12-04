@@ -86,5 +86,6 @@ STATIC_URL = '/static/'
 
 STREAM_NEWS_FEEDS = dict(flat='flat')
 
-STREAM_API_KEY = 'mync288zsypf'
-STREAM_API_SECRET = '6dkprchw7mnf4y4s9928pbweyfczqg2xkvgz95r5m87ygzh549rpfuuc8kvbrm5a'
+# https://getstream.io/dashboard/
+STREAM_API_KEY = 'api_key'
+STREAM_API_SECRET = 'api_secret'
