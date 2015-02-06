@@ -40,12 +40,8 @@ class HomeView(CreateView):
 def timeline(request):
     enricher = Enrich()
     user = feed_manager.get_user_feed(request.user.id)
-    # feed = feed_manager.get_news_feeds(request.user.id)['']
     activities = user.get(limit=25)[u'results']
-    # print(activities)
-    # print("#######")
     enricher.enrich_activities(activities)
-    # print(activities)
     context = {
         'activities': activities
     }

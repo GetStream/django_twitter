@@ -3,4 +3,5 @@
 *.sqlite3
 stream_twitter/migrations/*
 *.DS_Store
+*.stream*
 
