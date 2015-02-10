@@ -25,6 +25,7 @@ class TweetView(CreateView):
 class FollowView(CreateView):
     model = Follow
     fields = ['target']
+    success_url = "/timeline/"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
