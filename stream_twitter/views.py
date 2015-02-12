@@ -42,6 +42,7 @@ def timeline(request):
     enricher = Enrich()
     user = feed_manager.get_user_feed(request.user.id)
     activities = user.get(limit=25)[u'results']
+    print(activities)
     enricher.enrich_activities(activities)
     context = {
         'activities': activities
