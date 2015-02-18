@@ -19,7 +19,7 @@ class TweetView(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super(TweetView, self).form_valid(form) # There is a bug here
+        return super(TweetView, self).form_valid(form)
 
 
 class FollowView(CreateView):
@@ -29,7 +29,7 @@ class FollowView(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super(FollowView, self).form_valid(form) # There is a bug here
+        return super(FollowView, self).form_valid(form)
 
 class HomeView(CreateView):
     greeting = "Welcome to Stream Twitter"
