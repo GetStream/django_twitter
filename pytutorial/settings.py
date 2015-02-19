@@ -25,9 +25,9 @@ DEBUG = os.environ.get("DEBUG", "off") == "on"
 
 ALLOWED_HOSTS = ['*']
 
-FIXTURE_DIRS = (
-    os.path.join(BASE_DIR, "fixtures")
-)
+# FIXTURE_DIRS = (
+#     os.path.join(BASE_DIR, "fixtures")
+# )
 
 # Application definition
 
