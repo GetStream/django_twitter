@@ -30,9 +30,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-# FIXTURE_DIRS = (
-#     os.path.join(BASE_DIR, "fixtures")
-# )
+FIXTURE_DIRS = (
+    os.path.join(BASE_DIR, "fixtures")
+)
 
 # Application definition
 
@@ -44,7 +44,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'stream_twitter',
-    'stream_django'
+    'stream_django',
+    'pytutorial',
 )
 
 MIDDLEWARE_CLASSES = (

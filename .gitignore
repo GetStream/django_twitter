@@ -1,6 +1,6 @@
 *.pyc
 *.DStore
 stream_twitter/migrations/*
-#*.sqlite3
+*.sqlite3
 *.DS_Store
 
