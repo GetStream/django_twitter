@@ -23,6 +23,8 @@ SECRET_KEY = '*m&(&5!c^7j^7s$33u(bt567k!q0)@&p1io_w($ec+g66zr!0@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "off") == "on" 
 
+TEMPLATE_DEBUG = os.environ.get("DEBUG", "off") == "on"
+
 ALLOWED_HOSTS = ['*']
 
 # FIXTURE_DIRS = (
