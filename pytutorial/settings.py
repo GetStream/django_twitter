@@ -21,12 +21,13 @@ TEMPLATE_PATH = os.path.join(BASE_DIR, "templates")
 SECRET_KEY = '*m&(&5!c^7j^7s$33u(bt567k!q0)@&p1io_w($ec+g66zr!0@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = os.environ.get("DEBUG", "off") == "on" 
 
-TEMPLATE_DEBUG = True
+ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = []
-
+FIXTURE_DIRS = (
+    os.path.join(BASE_DIR, "fixtures")
+)
 
 # Application definition
 
@@ -93,6 +94,6 @@ STREAM_NEWS_FEEDS = dict(flat='flat')
 LOGIN_URL='/accounts/login'
 LOGIN_REDIRECT_URL='tweet' 
 
-# https://getstream.io/dashboard/
+# if you run on Heroku you don't need to set this
 STREAM_API_KEY = 'h7mu8swwk4aw'
 STREAM_API_SECRET = 'cqwmk2cd74h9zrksbfbkxsf8vbcj6f7ks3kfwnh5j5nfy9c593j78zd27ukg8f9d'

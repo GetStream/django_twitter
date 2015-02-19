@@ -1,0 +1,13 @@
+{
+  "name": "Stream Twitter Example",
+  "description": "Stream is awesome!",
+  "repository": "https://github.com/tbarbugli/stream_twitter",
+  "logo": "https://github.com/yoland/stream_twitter/blob/master/logo/logo.svg",
+  "keywords": ["Stream", "Django", "Awesome"],
+  "env": {
+    "DEBUG": "off"
+  },
+  "scripts": {
+    "postdeploy": "python manage.py loaddata ./pytutorial/fixtures/initial_data.json"
+  }
+}
