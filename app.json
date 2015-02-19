@@ -5,9 +5,9 @@
   "logo": "https://github.com/yoland/stream_twitter/blob/master/logo/logo.svg",
   "keywords": ["Stream", "Django", "Awesome"],
   "env": {
-    "DEBUG": "off"
+    "DEBUG": "on"
   },
   "scripts": {
-    "postdeploy": "python manage.py loaddata ./pytutorial/fixtures/initial_data.json"
+    "postdeploy": "python manage.py migrate; python manage.py loaddata ./pytutorial/fixtures/initial_data.json"
   }
 }
