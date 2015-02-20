@@ -68,7 +68,16 @@ WSGI_APPLICATION = 'pytutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {'default':dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
+DATABASES = {'default':dj_database_url.config()}
+# DATABASES = {}
+
+# print(DATABASES.get('default'))
+
+
+DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+} if not DATABASES.get('default') else DATABASES.get('default')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -96,6 +105,8 @@ STREAM_NEWS_FEEDS = dict(flat='flat')
 
 LOGIN_URL='/accounts/login'
 LOGIN_REDIRECT_URL='tweet' 
+
+USE_AUTH = bool(os.environ.get('USE_AUTH'))
 
 # if you run on Heroku you don't need to set this
 STREAM_API_KEY = 'h7mu8swwk4aw'

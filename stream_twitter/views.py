@@ -1,7 +1,7 @@
 from django.views.generic.edit import CreateView
 from django.shortcuts import render_to_response, render
 from django.template.response import TemplateResponse
-
+from django.contrib.auth import authenticate, get_user_model, login as auth_login
 from django.contrib.auth.decorators import login_required
 
 
@@ -10,6 +10,8 @@ from stream_django.feed_manager import feed_manager
 
 from stream_twitter.models import Follow
 from stream_twitter.models import Tweet
+
+from pytutorial import settings
 
 
 class TweetView(CreateView):
@@ -35,10 +37,12 @@ class HomeView(CreateView):
     greeting = "Welcome to Stream Twitter"
 
     def get(self, request):
+
         if not request.user.is_authenticated() and not settings.USE_AUTH:
             # hack to log you in automatically for the demo app
             admin_user = authenticate(username='mike', password='1234')
             auth_login(request, admin_user)
+
         return render_to_response('stream_twitter/home.html', {'greeting': self.greeting})
 
 @login_required
