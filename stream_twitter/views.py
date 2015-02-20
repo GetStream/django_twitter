@@ -1,7 +1,8 @@
 from django.views.generic.edit import CreateView
 from django.shortcuts import render_to_response, render
 from django.template.response import TemplateResponse
-from django.contrib.auth import authenticate, get_user_model, login as auth_login
+from django.contrib.auth import authenticate, get_user_model, \
+    login as auth_login
 from django.contrib.auth.decorators import login_required
 
 
@@ -43,7 +44,8 @@ class HomeView(CreateView):
             admin_user = authenticate(username='mike', password='1234')
             auth_login(request, admin_user)
 
-        return render_to_response('stream_twitter/home.html', {'greeting': self.greeting})
+        return render_to_response('stream_twitter/home.html', \
+            {'greeting': self.greeting})
 
 @login_required
 def timeline(request):

@@ -24,11 +24,8 @@ SECRET_KEY = '*m&(&5!c^7j^7s$33u(bt567k!q0)@&p1io_w($ec+g66zr!0@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# DEBUG = os.environ.get("DEBUG", "off") == "on" 
-DEBUG = True
-
-# TEMPLATE_DEBUG = os.environ.get("DEBUG", "off") == "on"
-TEMPLATE_DEBUG = True
+DEBUG = os.environ.get("DEBUG", "off") == "on" 
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
 
@@ -104,8 +101,7 @@ TEMPLATE_DIRS = (
 STREAM_NEWS_FEEDS = dict(flat='flat')
 
 LOGIN_URL='/accounts/login'
-LOGIN_REDIRECT_URL='tweet' 
-
+LOGIN_REDIRECT_URL='tweet'
 USE_AUTH = bool(os.environ.get('USE_AUTH'))
 
 # if you run on Heroku you don't need to set this
