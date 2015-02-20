@@ -35,6 +35,10 @@ class HomeView(CreateView):
     greeting = "Welcome to Stream Twitter"
 
     def get(self, request):
+        if not request.user.is_authenticated() and not settings.USE_AUTH:
+            # hack to log you in automatically for the demo app
+            admin_user = authenticate(username='mike', password='1234')
+            auth_login(request, admin_user)
         return render_to_response('stream_twitter/home.html', {'greeting': self.greeting})
 
 @login_required
