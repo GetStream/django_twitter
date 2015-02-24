@@ -1,26 +1,35 @@
-div.stream-content {
-    top: 50px;
+div.container {
+    position: absolute;
+}
+
+div.timeline-container {
     position: relative;
 }
 
-.twitter-content {
-    color: #FFF;
+div.timeline-content {
     font-size: 20px;
-    margin: 0;
+    margin-top: 10px;
     position: absolute;
-    top: 50%;
     left: 50%;
     text-align: left;
     margin-right: -50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, 0%)
 }
 
-span.user {
-    color: #D66969;
+div.content {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
 }
 
-span.verb {
-    color: #6BC7B4;
+div.activity {
+    position: relative;
+    background-color: #FFF;
+    padding: 20px;
+}
+
+span.activity-text {
+    color: #5E799B;
 }
 
 body {

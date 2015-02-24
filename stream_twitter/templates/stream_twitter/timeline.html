@@ -3,13 +3,13 @@
 
 
 {% block content %}
-<div class="stream-content">
-<div class="twitter-content">
-
-{% for i in activities %}
-  {% render_activity i %} <br>
-{% endfor %}
-
+<div class="container">
+<div class="timeline-container">
+  <div class="timeline-content">
+  {% for i in activities %}
+    {% render_activity i %} <br>
+  {% endfor %}
+  </div>
 </div>
 </div>
 
