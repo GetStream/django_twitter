@@ -15,6 +15,9 @@ import dj_database_url
 BASE_DIR = os.path.dirname(__file__)
 TEMPLATE_PATH = os.path.join(BASE_DIR, "templates")
 
+BASE_ROOT = os.path.abspath(os.path.join(os.path.split(__file__)[0], '..'))
+STATIC_ROOT = os.path.join(BASE_ROOT, 'static/')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -104,6 +107,3 @@ LOGIN_URL='/accounts/login'
 LOGIN_REDIRECT_URL='tweet'
 USE_AUTH = bool(os.environ.get('USE_AUTH'))
 
-# if you run on Heroku you don't need to set this
-STREAM_API_KEY = 'h7mu8swwk4aw'
-STREAM_API_SECRET = 'cqwmk2cd74h9zrksbfbkxsf8vbcj6f7ks3kfwnh5j5nfy9c593j78zd27ukg8f9d'
