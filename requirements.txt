@@ -9,3 +9,4 @@ requests==2.5.1
 six==1.9.0
 stream-django==1.2.0
 stream-python==2.1.4
+whitenoise==1.0.6
