@@ -8,15 +8,14 @@
       <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
       <meta http-equiv="cleartype" content="on">
       
-      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-      <link rel="stylesheet" href="/static/style.css" type="text/x-scss" charset="utf-8">
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,500' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="/static/style.css" type="text/css" charset="utf-8">
+      <link rel="stylesheet" href="/static/stream_twitter.css" type="text/css" charset="utf-8">
+      <script type="text/javascript" src="/static/basic.js"></script>
   </head>
 <body>
     {% block nav %}
-      {% include "core/_nav.html" with location='trending' %}
+      {% include "stream_twitter/_nav.html" %}
     {% endblock nav %}
-
     {% block content %}
     {% endblock content %}
 </body>

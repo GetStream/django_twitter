@@ -27,7 +27,7 @@ SECRET_KEY = '*m&(&5!c^7j^7s$33u(bt567k!q0)@&p1io_w($ec+g66zr!0@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = os.environ.get("DEBUG", "off") == "on" 
+DEBUG = os.environ.get("DEBUG", "on") == "on" 
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
@@ -107,3 +107,6 @@ LOGIN_URL='/accounts/login'
 LOGIN_REDIRECT_URL='tweet'
 USE_AUTH = bool(os.environ.get('USE_AUTH'))
 
+# if you run on Heroku you don't need to set this
+STREAM_API_KEY = 'h7mu8swwk4aw'
+STREAM_API_SECRET = 'cqwmk2cd74h9zrksbfbkxsf8vbcj6f7ks3kfwnh5j5nfy9c593j78zd27ukg8f9d'

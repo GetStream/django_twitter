@@ -4,6 +4,7 @@ register = template.Library()
 
 @register.simple_tag
 def render_activity(activity):
-    statement = "User {0} {1}: {2}".format(activity.get(u'actor'), 
-        activity.get(u'verb'), activity.get(u'object').text)
+    user = '<span class="user">{0}</span>'.format(activity.get(u'actor')
+    verb = '<span class="verb">{0}</span>'.format(activity.get(u'verb'))
+    statement = '{0} {1}: {2}'.format(user, verb, activity.get(u'object').text)
     return statement

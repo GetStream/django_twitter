@@ -1,0 +1,28 @@
+div.stream-content {
+    top: 50px;
+    position: relative;
+}
+
+.twitter-content {
+    color: #FFF;
+    font-size: 20px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: left;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+span.user {
+    color: #D66969;
+}
+
+span.verb {
+    color: #6BC7B4;
+}
+
+body {
+    color: #2B4155;
+}

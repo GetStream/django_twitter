@@ -7,6 +7,9 @@
   "env": {
     "DEBUG": "on"
   },
+  "addons": [
+    "stream", "heroku-postgresql:hobby-dev", "rollbar"
+  ],
   "scripts": {
     "postdeploy": "python manage.py after_deploy"
   }
