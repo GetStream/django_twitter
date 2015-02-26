@@ -32,6 +32,18 @@ span.activity-text {
     color: #5E799B;
 }
 
+span.hashtag {
+    font-weight: bold;
+}
+
+span.mention {
+    font-weight: bold;
+}
+
+span.user {
+    font-weight: bold;
+}
+
 body {
     color: #2B4155;
 }
