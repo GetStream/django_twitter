@@ -7,14 +7,29 @@ from stream_django.feed_manager import feed_manager
 
 
 class Tweet(activity.Activity, models.Model):
+
     user = models.ForeignKey('auth.User')
     text = models.CharField(max_length=160)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
     @property
+    def print_self(self):
+        print(self.text)
+
+    @property
     def activity_object_attr(self):
         return self
+
+    def register_hashtags(self):
+        hashtag_list = self.parse_hashtags().sort()
+        hashtag_set = set(hashtag_list)
+        for hashtag in hashtag_set:
+            match = Hashtag.objects.filter(name=hashtag)
+            if len(match) == 0:
+                Hashtag.objects.create(name=hashtag, used_amount=1).save()
+            else:
+                match[0].used_amount += 1
 
     def parse_hashtags(self):
         return [slugify(i) for i in self.text.split() if i.startswith("#")]
@@ -29,7 +44,6 @@ class Tweet(activity.Activity, models.Model):
         mention_counter = 0
         result = {u"parsed_text": u"", u"hashtags": [], u"mentions" :[]}
         for index, value in enumerate(parts):
-            # print("index: {0}\nvalue: {1}".format(index, value))
             if value.startswith("#"):
                 parts[index] = u"{hashtag"+str(hashtag_counter)+u"}"
                 hashtag_counter += 1
@@ -40,8 +54,6 @@ class Tweet(activity.Activity, models.Model):
                 result[u'mentions'].append(value)
         result[u'parsed_text'] = " ".join(parts)
         return result
-
-
 
     @property
     def activity_notify(self):
@@ -66,6 +78,11 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     description = models.TextField()
     picture = models.ImageField(upload_to='profile_pictures', blank=True)
+
+class Hashtag(models.Model):
+    name = models.CharField(max_length=160)
+    used_amount = models.IntegerField()
+
 
 def unfollow_feed(sender, instance, **kwargs):
     feed_manager.unfollow_user(instance.user_id, instance.target_id)

@@ -22,12 +22,18 @@
         <li>
           <a href="/follow/">Follow</a>
         </li>
+        {% if user.is_authenticated %}
         <li>
-          <a href="/accounts/login/">Log in</a>
+          <a href="/user/{{ user }}">{{ user }}</a>
         </li>
         <li>
           <a href="/accounts/logout/">Log out</a>
         </li>
+        {% else %}
+        <li>
+          <a href="/accounts/login/">Log in</a>
+        </li>
+        {% endif %}
         </ul>
     </div>
   </div>

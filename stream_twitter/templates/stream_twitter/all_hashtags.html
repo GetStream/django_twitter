@@ -1,0 +1,16 @@
+{% extends 'stream_twitter/_base.html' %}
+{% load hashtag_tags %}
+
+
+{% block content %}
+<div class="container">
+<div class="timeline-container">
+  <div class="timeline-content">
+  {% for i in hashtags %}
+    {% render_hashtag i %}<br>
+  {% endfor %}
+  </div>
+</div>
+</div>
+
+{% endblock content %}

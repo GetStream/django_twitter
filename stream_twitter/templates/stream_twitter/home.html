@@ -1,4 +1,9 @@
 {% extends 'stream_twitter/_base.html' %}
+
+{% block nav %}
+  {% include "stream_twitter/_nav.html" with request=request %}
+{% endblock nav %}
+
 {% block content %}
 <div class="content">
 <h1>{{ greeting }}</h1>

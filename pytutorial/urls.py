@@ -11,10 +11,19 @@ urlpatterns = patterns('',
     url(r'^tweet/', login_required(views.TweetView.as_view())),
     url(r'^follow/', login_required(views.FollowView.as_view())),
     url(r'^timeline/', views.timeline),
-    url(r'^profile/', None),
-    url(r'^accounts/login/', 'django.contrib.auth.views.login',{'template_name': 'admin/login.html'}),
+    url(r'^user/(?P<user_name>\w+)/$', views.user),
+    url(r'^users/$', views.all_users),
+    url(r'^hashtag/(?P<hashtag_name>\w+)/', views.hashtag),
+    url(r'^hashtags/$', views.all_hashtags),
+    url(r'^accounts/login/', 'django.contrib.auth.views.login',\
+        {'template_name': 'admin/login.html'}),
     url(r'^accounts/logout/', 'django.contrib.auth.views.logout'),
     url(r'^$', views.HomeView.as_view())
 )
 
 urlpatterns += staticfiles_urlpatterns() 
+urlpatterns += patterns(
+        'django.views.static',
+        (r'media/(?P<path>.*)',
+        'serve',
+        {'document_root': settings.MEDIA_ROOT}))

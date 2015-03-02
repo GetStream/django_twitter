@@ -22,6 +22,12 @@ div.content {
     margin-top: 20px;
 }
 
+div.user-picture {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
 div.activity {
     position: relative;
     background-color: #FFF;

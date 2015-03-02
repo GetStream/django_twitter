@@ -107,6 +107,8 @@ LOGIN_URL='/accounts/login'
 LOGIN_REDIRECT_URL='tweet'
 USE_AUTH = bool(os.environ.get('USE_AUTH'))
 
+AUTH_PROFILE_MODULE = 'stream_twitter.UserProfile'
+
 # if you run on Heroku you don't need to set this
 STREAM_API_KEY = 'h7mu8swwk4aw'
 STREAM_API_SECRET = 'cqwmk2cd74h9zrksbfbkxsf8vbcj6f7ks3kfwnh5j5nfy9c593j78zd27ukg8f9d'
