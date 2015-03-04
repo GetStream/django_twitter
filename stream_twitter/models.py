@@ -21,10 +21,15 @@ class Tweet(activity.Activity, models.Model):
     def activity_object_attr(self):
         return self
 
+    # TODO: rename to create_hashtags
     def register_hashtags(self):
+        # why do you need to sort?
         hashtag_list = self.parse_hashtags().sort()
         hashtag_set = set(hashtag_list)
         for hashtag in hashtag_set:
+            # TODO: use get_or_create
+            # TODO: increment counters in one query
+            # Hashtag.objects.filter(or_conditions).update((F('used_amount')+1))
             match = Hashtag.objects.filter(name=hashtag)
             if len(match) == 0:
                 Hashtag.objects.create(name=hashtag, used_amount=1).save()
@@ -81,6 +86,7 @@ class UserProfile(models.Model):
 
 class Hashtag(models.Model):
     name = models.CharField(max_length=160)
+    #TODO: rename with occurrences?
     used_amount = models.IntegerField()
 
 
