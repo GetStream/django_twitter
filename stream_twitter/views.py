@@ -83,14 +83,8 @@ def hashtag(request, hashtag_name):
     }
     return render(request, 'stream_twitter/hashtag.html', context)
 
-<<<<<<< HEAD
 def trending_hashtags(request):
     hashtags = Hashtag.objects.order_by('-used_amount')
-=======
-def all_hashtags(request):
-    #TODO: this is much better .order_by('-used_amount')
-    hashtags = Hashtag.objects.order_by('used_amount').reverse()
->>>>>>> ca5a96f13de6a20ed986717db9f0fbd1e4b2ae03
     context = {
         'hashtags': hashtags
     }
