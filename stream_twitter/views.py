@@ -78,6 +78,7 @@ def hashtag(request, hashtag_name):
     activities = feed.get(limit=25)['results']
     print(activities)
 
+    # why this block?
     if len(activities) != 0:
         match = Hashtag.objects.filter(name=hashtag_name)
         if len(match) == 0:
@@ -94,6 +95,7 @@ def hashtag(request, hashtag_name):
     return render(request, 'stream_twitter/hashtag.html', context)
 
 def all_hashtags(request):
+    #TODO: this is much better .order_by('-used_amount')
     hashtags = Hashtag.objects.order_by('used_amount').reverse()
     context = {
         'hashtags': hashtags
