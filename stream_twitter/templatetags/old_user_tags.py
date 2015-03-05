@@ -1,8 +1,8 @@
-from django import template
+# from django import template
 
-register = template.Library()
+# register = template.Library()
 
-@register.simple_tag
+# @register.simple_tag
 def render_user(user):
     print("\n####{0}####\n".format(user.username))
     picture = '<div class="user-picture"><a href="{link}"><img src="{picture}"></a></div>'\

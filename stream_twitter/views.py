@@ -76,16 +76,6 @@ def hashtag(request, hashtag_name):
     hashtag_name = hashtag_name.lower()
     feed = feed_manager.get_feed('hashtag', hashtag_name);
     activities = feed.get(limit=25)['results']
-    print(activities)
-
-    if len(activities) != 0:
-        match = Hashtag.objects.filter(name=hashtag_name)
-        if len(match) == 0:
-            Hashtag.objects.create(name=hashtag_name, used_amount=1).save()
-        else:
-            h = match[0]
-            h.used_amount += 1
-            h.save()
 
     enricher.enrich_activities(activities)
     context = {
@@ -93,15 +83,15 @@ def hashtag(request, hashtag_name):
     }
     return render(request, 'stream_twitter/hashtag.html', context)
 
-def all_hashtags(request):
-    hashtags = Hashtag.objects.order_by('used_amount').reverse()
+def trending_hashtags(request):
+    hashtags = Hashtag.objects.order_by('-used_amount')
     context = {
         'hashtags': hashtags
     }
     return render(request, 'stream_twitter/all_hashtags.html', context)
 
-def all_users(request):
-    users = User.objects.all()
+def recent_users(request):
+    users = User.objects.order_by('-used_amount')
     context = {
         'users': users
     }

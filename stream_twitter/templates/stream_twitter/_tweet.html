@@ -1,0 +1,17 @@
+{% load filters %}
+
+<div class="activity">
+  <div class="user-container">
+    <a href="/user/{{ tweet.user.username }}">
+    <img class="tweet-profile" src="{{ tweet.user.userprofile.picture.url }}">
+    </a>
+    <div class="user-name">
+      <a href="/user/{{ tweet.user.username }}">{{ tweet.user.username }}</a>:
+    </div>
+  </div>
+  <div class="activity-text">
+  {% autoescape off %}
+    {{ tweet|parse_tweet_text }}
+  {% endautoescape %}
+  </div>
+</div>
