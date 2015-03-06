@@ -1,0 +1,12 @@
+<div class="user">
+  <div class="user-picture">
+    <img class="profile-picture img-responsive" alt="Responsive image" class="user-picture" src="{{ user.userprofile.picture.url }}">
+  </div>
+  <div class="user-basic-info">
+    <span class="user-basic-info-name">{{ user.first_name }} {{user.last_name}}</span>
+    <a href="/user/{{ user.username }}/"><span class="user-basic-info-id">@{{ user.username }}</span></a>
+  </div> 
+  <div class="user-description">
+      {{ user.userprofile.description }}
+  </div>
+</div>

@@ -32,6 +32,14 @@ class FollowView(CreateView):
     fields = ['target']
     success_url = "/timeline/"
 
+    def get(self, request):
+        users = User.objects.order_by('-date_joined')
+        context = {
+            'users': users,
+            'form': self.get_form_class()
+        }
+        return render(request, 'stream_twitter/follow_form.html', context)
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(FollowView, self).form_valid(form)
@@ -43,7 +51,7 @@ class HomeView(CreateView):
         context = RequestContext(request)
         context_dict = {}
         context_dict['greeting'] = self.greeting
-        context_dict['user'] = request.user
+        context_dict['login_user'] = request.user
         return render_to_response('stream_twitter/home.html', context_dict, context)
 
 @login_required
@@ -53,7 +61,8 @@ def timeline(request):
     activities = feeds.get('flat').get()[u'results']
     enricher.enrich_activities(activities)
     context = {
-        'activities': activities
+        'activities': activities,
+        'login_user': request.user
     }
     return render(request, 'stream_twitter/timeline.html', context)
 
@@ -65,7 +74,8 @@ def user(request, user_name):
     enricher.enrich_activities(activities)
     context = {
         'activities': activities,
-        'user': user
+        'user': user,
+        'login_user': request.user
     }
     return render(request, 'stream_twitter/user.html', context)
 
@@ -89,10 +99,3 @@ def trending_hashtags(request):
         'hashtags': hashtags
     }
     return render(request, 'stream_twitter/all_hashtags.html', context)
-
-def recent_users(request):
-    users = User.objects.order_by('-used_amount')
-    context = {
-        'users': users
-    }
-    return render(request, 'stream_twitter/all_users.html', context)

@@ -1,10 +1,20 @@
 {% extends 'stream_twitter/_base.html' %}
 {% block content %}
-<div class="content">
-<form action="" method="post">{% csrf_token %}
+<div class="container">
+  <div class="row">
+    {% for user in users %}
+    <div class="col-md-3 col-xs-6">
+      {% include "stream_twitter/_user.html" %}
+    </div>
+    {% endfor %}
+  </div>
+  <form action="" method="post">{% csrf_token %}
     {{ form.as_p }}
     <button type="submit" value="Create" />Create</button>
-</form>
-<div class="stream-content">
+  </form>
+</div>
+
 {% endblock content %}
+
+
 

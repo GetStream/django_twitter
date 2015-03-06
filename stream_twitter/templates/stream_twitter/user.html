@@ -1,25 +1,22 @@
 {% extends 'stream_twitter/_base.html' %}
 {% load activity_tags %}
-{# {% load user_tags %} #}
 
 
 {% block content %}
 <div class="container">
-<div class="user">
-  <div class="user-picture">
-    <img src="{{ user.userprofile.picture.url }}"/>
+<div class="row">
+  <div class="col-md-3">
+    {% include 'stream_twitter/_user.html' %}
   </div>
-  <div class="user-description">
-      {{ user.userprofile.description }}
+  <div class="col-md-6">
+    <div class="row">
+    {% for i in activities %}
+      {% render_activity i %}
+    {% endfor %}
+    </div>
   </div>
-</div>
-<div class="timeline-container">
-  <div class="timeline-content">
-  {% for i in activities %}
-    {% render_activity i %} <br>
-  {% endfor %}
+  <div class="col-md-3">
   </div>
-</div>
 </div>
 
 {% endblock content %}

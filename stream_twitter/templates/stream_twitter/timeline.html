@@ -1,14 +1,23 @@
 {% extends 'stream_twitter/_base.html' %}
 {% load activity_tags %}
 
-
 {% block content %}
 <div class="container">
-<div class="timeline-container">
-  <div class="timeline-content">
-  {% for i in activities %}
-    {% render_activity i %} <br>
-  {% endfor %}
+<div class="row">
+  <div class="col-md-3">
+    {% include 'stream_twitter/_user.html' %}
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="timeline-content">
+      {% for i in activities %}
+        {% render_activity i %}
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    #WHO to FOLLOW STUB
   </div>
 </div>
 </div>
