@@ -17,10 +17,6 @@ from stream_twitter.models import Tweet, Hashtag
 
 from pytutorial import settings
 
-#test only
-import pprint
-
-
 class TimelineView(CreateView):
     model = Tweet
     fields = ['text']
@@ -36,8 +32,6 @@ class TimelineView(CreateView):
         activities = feeds.get('flat').get()[u'results']
         enricher.enrich_activities(activities)
         hashtags = Hashtag.objects.order_by('-occurrences')
-        for i in hashtags:
-            print(i.occurrences)
         context = {
             'activities': activities,
             'form': self.get_form_class(),
@@ -61,8 +55,6 @@ class FollowView(CreateView):
                 following.append((i, False))
             else:
                 following.append((i, True))
-        print(users)
-        print(following)
         login_user = User.objects.get(username = request.user)
         context = {
             'users': users,
@@ -80,14 +72,11 @@ class FollowView(CreateView):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         if form.is_valid():
-            print(request.POST['target'])
             follow, created = Follow.objects.get_or_create(\
                 user=request.user,
                 target_id=request.POST['target']
             )
-            print("\n###\n{0}: {1}\n###\n".format(follow, created))
             if not created:
-                print("###deleted###")
                 follow.delete()
         return redirect(self.success_url)
         
@@ -96,27 +85,16 @@ class HomeView(CreateView):
     greeting = "Welcome to Stream Twitter"
 
     def get(self, request):
+
+        if not request.user.is_authenticated() and not settings.USE_AUTH:
+            # hack to log you in automatically for the demo app
+            admin_user = authenticate(username='admin', password='admin')
+            auth_login(request, admin_user)
         context = RequestContext(request)
         context_dict = {}
         context_dict['greeting'] = self.greeting
         context_dict['login_user'] = request.user
         return render_to_response('stream_twitter/home.html', context_dict, context)
-
-@login_required
-def timeline(request):
-    enricher = Enrich()
-    feeds = feed_manager.get_news_feeds(request.user.id)
-    activities = feeds.get('flat').get()[u'results']
-    enricher.enrich_activities(activities)
-    hashtags = Hashtag.objects.order_by('-occurrences')
-    for i in hashtags:
-        print(i.occurrences)
-    context = {
-        'activities': activities,
-        'login_user': request.user,
-        'hashtags': hashtags
-    }
-    return render(request, 'stream_twitter/timeline.html', context)
 
 def user(request, user_name):
     enricher = Enrich()
