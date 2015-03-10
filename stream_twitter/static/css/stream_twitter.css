@@ -46,6 +46,20 @@ div.welcome {
     text-align: center;
 }
 
+div.follow-button {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+div.hashtags {
+    text-align: center;
+    color: #FFF;
+}
+
+div.timeline-content {
+    margin: 20px;
+}
+
 span.user-basic-info-name {
     font-size: 20px;
     display: block;
@@ -62,6 +76,11 @@ img.profile-picture {
 h1.welcome-title {
     font-size: 80px;
     color: #FFF;
+}
+
+a.hashtag {
+    color: #FFF;
+    font-size: 20px;
 }
 
 /*body {

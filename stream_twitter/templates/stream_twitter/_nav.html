@@ -22,7 +22,7 @@
         <li>
           <a href="/follow/">Follow</a>
         </li>
-        {% if user.is_authenticated and login_user %}
+        {% if login_user.is_authenticated and login_user %}
         <li>
           <a href="/user/{{ login_user }}">{{ login_user }}</a>
         </li>

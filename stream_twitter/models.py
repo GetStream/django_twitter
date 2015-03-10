@@ -32,6 +32,7 @@ class Tweet(activity.Activity, models.Model):
             # Hashtag.objects.filter(or_conditions).update((F('used_amount')+1))
             h,created = Hashtag.objects.get_or_create(name=hashtag)
             h.occurrences += 1
+            h.save()
 
 
     def parse_hashtags(self):

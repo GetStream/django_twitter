@@ -2,16 +2,36 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    {% for user in users %}
+    {% for one in following %}
     <div class="col-md-3 col-xs-6">
-      {% include "stream_twitter/_user.html" %}
+      <div class="user">
+      {% include "stream_twitter/_user.html" with user=one.0 %}
+      <div class="follow-button">
+       <form action="" method="post">{% csrf_token %}
+        <input type="hidden" id="id_target" name="target" value="{{one.0.id}}">
+        <button type="submit" class="btn btn-primary" value="Create" />
+        {% if one.1 %}
+          Unfollow
+        {% else %}
+          Follow
+        {% endif %}
+        </button> 
+      </form>
     </div>
-    {% endfor %}
+    </div>
   </div>
-  <form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" value="Create" />Create</button>
-  </form>
+  {% endfor %}
+  </div>
+  <div class="row">
+    <div class="">
+<!--     <form action="" method="post">{% csrf_token %}
+ {% for field in form %} 
+      {{ field.label_tag }}: {{ field }}
+    {% endfor %} 
+   <button type="submit" value="Create" />Create</button>
+  </form> -->
+</div>
+</div>
 </div>
 
 {% endblock content %}

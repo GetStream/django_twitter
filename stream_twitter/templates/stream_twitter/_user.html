@@ -1,6 +1,8 @@
 <div class="user">
   <div class="user-picture">
+    <a href="/user/{{ user.username }}/">
     <img class="profile-picture img-responsive" alt="Responsive image" class="user-picture" src="{{ user.userprofile.picture.url }}">
+    </a>
   </div>
   <div class="user-basic-info">
     <span class="user-basic-info-name">{{ user.first_name }} {{user.last_name}}</span>

@@ -1,11 +1,40 @@
 {% extends 'stream_twitter/_base.html' %}
+{% load activity_tags %}
+
 
 {% block content %}
-<div class="content">
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create" />
-</form>
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+    {% include 'stream_twitter/_user.html' %}
+  </div>
+  <div class="col-md-6">
+    <div class="timeline-content">
+      <div class="row">
+        <div class="col-xs-12">
+          <form action="" method="post" class="form-group">{% csrf_token %}
+            <div class="row">
+            <div class="col-xs-8">
+            <input id="id_text" class="form-control" width="100%" name="text" type="text" placeholder="What's on your mind?">
+          </div>
+          <div class="col-xs-4">
+            <input type="submit" value="Create" class="btn btn-primary"/>
+          </div>
+        </div>
+          </form>
+        </div>
+        <div class="col-xs-12">
+          {% for i in activities %}
+            {% render_activity i %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    {% include 'stream_twitter/_hashtags.html' %} 
+  </div>
+</div>
+
 </div>
 {% endblock content %}
-

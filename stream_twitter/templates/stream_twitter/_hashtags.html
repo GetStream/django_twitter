@@ -1,0 +1,10 @@
+<div class="hashtags">
+<div class="row">
+  <h3>Trending Hashtags:</h3>
+  {% for hashtag in hashtags %}
+  <div class="col-xs-12">
+    <a class="hashtag" href="/hashtag/{{hashtag.name}}/">#{{hashtag.name}}</a>
+  </div>
+  {% endfor %}
+</div>
+</div>
