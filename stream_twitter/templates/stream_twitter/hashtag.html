@@ -5,11 +5,20 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-xs-12">
+      <div class="search-title">
+        <h2>You searched for <span class="hashtag_name">
+          #{{ hashtag_name }}
+        </span>
+        :</h2>
+      </div>
+  </div>
+
       {% for i in activities %}
-        {% render_activity i %} <br>
+      <div class="col-sm-6">
+        {% render_activity i %}
+      </div>
       {% endfor %}
-    </div>
   </div>
 </div>
 

@@ -12,16 +12,7 @@
     <div class="timeline-content">
       <div class="row">
         <div class="col-xs-12">
-          <form action="" method="post" class="form-group">{% csrf_token %}
-            <div class="row">
-            <div class="col-xs-8">
-            <input id="id_text" class="form-control" width="100%" name="text" type="text" placeholder="What's on your mind?">
-          </div>
-          <div class="col-xs-4">
-            <input type="submit" value="Create" class="btn btn-primary"/>
-          </div>
-        </div>
-          </form>
+          {% include 'stream_twitter/_tweet_input.html' %}
         </div>
         <div class="col-xs-12">
           {% for i in activities %}

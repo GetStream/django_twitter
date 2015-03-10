@@ -141,6 +141,7 @@ def hashtag(request, hashtag_name):
 
     enricher.enrich_activities(activities)
     context = {
+        'hashtag_name': hashtag_name,
         'activities': activities
     }
     return render(request, 'stream_twitter/hashtag.html', context)

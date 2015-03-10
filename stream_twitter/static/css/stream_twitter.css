@@ -60,9 +60,17 @@ div.timeline-content {
     margin: 20px;
 }
 
+div.search-title {
+    color: #FFF;
+}
+
 span.user-basic-info-name {
     font-size: 20px;
     display: block;
+}
+
+span.hashtag_name {
+    text-decoration: underline;
 }
 
 img.tweet-profile {
