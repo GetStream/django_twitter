@@ -64,6 +64,19 @@ div.search-title {
     color: #FFF;
 }
 
+div.description {
+    margin: 20px 0px 20px 0px;
+    font-size: 25px;
+    text-align: center;
+    color: #FFF;
+}
+
+a.description-link {
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 span.user-basic-info-name {
     font-size: 20px;
     display: block;
@@ -82,7 +95,7 @@ img.profile-picture {
 }
 
 h1.welcome-title {
-    font-size: 80px;
+    font-size: 60px;
     color: #FFF;
 }
 
@@ -90,6 +103,7 @@ a.hashtag {
     color: #FFF;
     font-size: 20px;
 }
+
 
 /*body {
     color: #2B4155;

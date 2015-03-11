@@ -8,7 +8,7 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^follow/', login_required(views.FollowView.as_view())),
+    url(r'^discover/', login_required(views.DiscoverView.as_view())),
     url(r'^timeline/', login_required(views.TimelineView.as_view())),
     url(r'^user/(?P<user_name>.+)/$', views.user),
     url(r'^hashtag/(?P<hashtag_name>.+)/', views.hashtag),

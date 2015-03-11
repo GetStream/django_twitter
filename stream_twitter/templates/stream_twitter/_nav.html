@@ -17,19 +17,19 @@
           <a href="/timeline/">Timeline</a>
         </li>
         <li>
-          <a href="/follow/">Follow</a>
+          <a href="/discover/">Discover</a>
         </li>
         {% if login_user.is_authenticated and login_user %}
         <li>
-          <a href="/user/{{ login_user }}">{{ login_user }}</a>
+          <a href="/user/{{ login_user }}">Profile</a>
         </li>
-        <li>
+       <!--  <li>
           <a href="/accounts/logout/">Log out</a>
         </li>
-        {% else %}
+        {# {% else %} #}
         <li>
           <a href="/accounts/login/">Log in</a>
-        </li>
+        </li> -->
         {% endif %}
         </ul>
     </div>

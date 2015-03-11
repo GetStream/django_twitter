@@ -38,10 +38,10 @@ class TimelineView(CreateView):
             'login_user': request.user,
             'hashtags': hashtags
         }
-        return render(request, 'stream_twitter/tweet_form.html', context)
+        return render(request, 'stream_twitter/timeline.html', context)
 
 
-class FollowView(CreateView):
+class DiscoverView(CreateView):
     model = Follow
     fields = ['target']
     success_url = "/timeline/"
@@ -91,9 +91,11 @@ class HomeView(CreateView):
             admin_user = authenticate(username='mike', password='1234')
             auth_login(request, admin_user)
         context = RequestContext(request)
-        context_dict = {}
-        context_dict['greeting'] = self.greeting
-        context_dict['login_user'] = request.user
+        context_dict = {
+            'greeting': self.greeting,
+            'login_user': request.user,
+            'users': User.objects.order_by('-date_joined')
+        }
         return render_to_response('stream_twitter/home.html', context_dict, context)
 
 def user(request, user_name):
