@@ -30,7 +30,7 @@ class TimelineView(CreateView):
         enricher = Enrich()
         feeds = feed_manager.get_news_feeds(request.user.id)
         activities = feeds.get('flat').get()[u'results']
-        enricher.enrich_activities(activities)
+        activities = enricher.enrich_activities(activities)
         hashtags = Hashtag.objects.order_by('-occurrences')
         context = {
             'activities': activities,
@@ -101,7 +101,7 @@ def user(request, user_name):
     user = get_object_or_404(User ,username=user_name)
     feeds = feed_manager.get_user_feed(user.id)
     activities = feeds.get()[u'results']
-    enricher.enrich_activities(activities)
+    activities = enricher.enrich_activities(activities)
     context = {
         'activities': activities,
         'user': user,
@@ -117,7 +117,7 @@ def hashtag(request, hashtag_name):
     feed = feed_manager.get_feed('hashtag', hashtag_name);
     activities = feed.get(limit=25)['results']
 
-    enricher.enrich_activities(activities)
+    activities = enricher.enrich_activities(activities)
     context = {
         'hashtag_name': hashtag_name,
         'activities': activities

@@ -15,8 +15,8 @@
           {% include 'stream_twitter/_tweet_input.html' %}
         </div>
         <div class="col-xs-12">
-          {% for i in activities %}
-            {% render_activity i %}
+          {% for activity in activities %}
+            {% render_activity activity %}
           {% endfor %}
         </div>
       </div>
