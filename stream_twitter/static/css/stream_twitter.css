@@ -71,10 +71,8 @@ div.description {
     color: #FFF;
 }
 
-a.description-link {
-    color: #FFF;
-    font-weight: bold;
-    text-decoration: underline;
+.navbar {
+    border: none;
 }
 
 span.user-basic-info-name {
@@ -87,7 +85,8 @@ span.hashtag_name {
 }
 
 img.tweet-profile {
-    min-width: 50px
+    margin-top:10px;
+    min-width: 60px
 }
 
 img.profile-picture {
@@ -103,6 +102,18 @@ a.hashtag {
     color: #FFF;
     font-size: 20px;
 }
+
+a.description-link {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+a.description-link:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
 
 
 /*body {

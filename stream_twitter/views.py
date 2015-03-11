@@ -88,7 +88,7 @@ class HomeView(CreateView):
 
         if not request.user.is_authenticated() and not settings.USE_AUTH:
             # hack to log you in automatically for the demo app
-            admin_user = authenticate(username='mike', password='1234')
+            admin_user = authenticate(username='theRealAlbert', password='1234')
             auth_login(request, admin_user)
         context = RequestContext(request)
         context_dict = {

@@ -20,6 +20,11 @@
       </div>
       </div>
     </div>
+    {% if forloop.counter|divisibleby:'4' %}
+    <div class="clearfix visible-md-block visible-lg-block"></div>
+    {% elif forloop.counter|divisibleby:'2' %}
+    <div class="clearfix visible-sm-block visible-xs-block"></div>
+    {% endif %}
   {% endfor %}
   </div>
   <div class="row">
