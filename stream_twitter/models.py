@@ -29,7 +29,7 @@ class Tweet(activity.Activity, models.Model):
         for hashtag in hashtag_set:
             h, created = Hashtag.objects.get_or_create(name=hashtag)
             h.save()
-        Hashtag.objects.filter(name__in=hashtag_set).update((F('occurrences')+1))
+        Hashtag.objects.filter(name__in=hashtag_set).update(occurrences=F('occurrences')+1)
 
     def parse_hashtags(self):
         return [slugify(i) for i in self.text.split() if i.startswith("#")]

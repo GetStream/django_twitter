@@ -2,15 +2,16 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    {% for one in following %}
+    {% for one, followed in following %}
     <div class="col-md-3 col-xs-6">
       <div class="user">
-      {% include "stream_twitter/_user.html" with user=one.0 %}
+      {% include "stream_twitter/_user.html" with user=one %}
       <div class="follow-button">
-       <form action="" method="post">{% csrf_token %}
-        <input type="hidden" id="id_target" name="target" value="{{one.0.id}}">
+       <form action="{% if followed %}{% url 'unfollow' one.id %}{% else %}{% url 'follow' %}{% endif %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="id_target" name="target" value="{{one.id}}">
         <button type="submit" class="btn btn-primary" value="Create" />
-        {% if one.1 %}
+        {% if followed %}
           Unfollow
         {% else %}
           Follow
@@ -29,12 +30,6 @@
   </div>
   <div class="row">
     <div class="">
-<!--     <form action="" method="post">{% csrf_token %}
- {% for field in form %} 
-      {{ field.label_tag }}: {{ field }}
-    {% endfor %} 
-   <button type="submit" value="Create" />Create</button>
-  </form> -->
 </div>
 </div>
 </div>
