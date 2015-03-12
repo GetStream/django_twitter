@@ -103,10 +103,15 @@ STREAM_NEWS_FEEDS = dict(flat='flat')
 LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = 'tweet'
 USE_AUTH = bool(os.environ.get('USE_AUTH'))
+DEMO_USERNAME = 'theRealAlbert'
+DEMO_PASSWORD = '1234'
 
 AUTH_PROFILE_MODULE = 'stream_twitter.UserProfile'
 
-# if you run on Heroku you don't need to set this
-STREAM_API_KEY = 'h7mu8swwk4aw'
-STREAM_API_SECRET = 'cqwmk2cd74h9zrksbfbkxsf8vbcj6f7ks3kfwnh5j5nfy9c593j78zd27ukg8f9d'
+# add your api keys from https://getstream.io/dashboard/
+# you do not need this if you are running on Heroku
+# and using getstream add-on
+STREAM_API_KEY = ''
+STREAM_API_SECRET = ''
+
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

@@ -1,5 +1,4 @@
 from django.views.generic.edit import CreateView
-from django.views.generic.edit import DeleteView
 from django.shortcuts import render_to_response, render, get_object_or_404,\
     redirect
 from django.contrib.auth import authenticate, login as auth_login
@@ -44,10 +43,8 @@ class HomeView(CreateView):
 
     def get(self, request):
         if not request.user.is_authenticated() and not settings.USE_AUTH:
-            # hack to log you in automatically for the demo app
-            # #TODO: move username and password to settings
             admin_user = authenticate(
-                username='theRealAlbert', password='1234')
+                username=settings.DEMO_USERNAME, password=settings.DEMO_PASSWORD)
             auth_login(request, admin_user)
         context = RequestContext(request)
         context_dict = {
