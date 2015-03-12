@@ -27,7 +27,7 @@ SECRET_KEY = '*m&(&5!c^7j^7s$33u(bt567k!q0)@&p1io_w($ec+g66zr!0@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = os.environ.get("DEBUG", "on") == "on" 
+DEBUG = os.environ.get("DEBUG", "on") == "on"
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
@@ -68,15 +68,15 @@ WSGI_APPLICATION = 'pytutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {'default':dj_database_url.config()}
+DATABASES = {'default': dj_database_url.config()}
 # DATABASES = {}
 
 # print(DATABASES.get('default'))
 
 
 DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 } if not DATABASES.get('default') else DATABASES.get('default')
 
 # Internationalization
@@ -103,8 +103,8 @@ TEMPLATE_DIRS = (
 
 STREAM_NEWS_FEEDS = dict(flat='flat')
 
-LOGIN_URL='/accounts/login'
-LOGIN_REDIRECT_URL='tweet'
+LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = 'tweet'
 USE_AUTH = bool(os.environ.get('USE_AUTH'))
 
 AUTH_PROFILE_MODULE = 'stream_twitter.UserProfile'

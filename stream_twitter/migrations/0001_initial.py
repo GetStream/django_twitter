@@ -15,10 +15,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Follow',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(
+                    verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('target', models.ForeignKey(related_name='followers', to=settings.AUTH_USER_MODEL)),
-                ('user', models.ForeignKey(related_name='friends', to=settings.AUTH_USER_MODEL)),
+                ('target', models.ForeignKey(
+                    related_name='followers', to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(
+                    related_name='friends', to=settings.AUTH_USER_MODEL)),
             ],
             options={
             },
@@ -27,7 +30,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Tweet',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(
+                    verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('text', models.CharField(max_length=160)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
