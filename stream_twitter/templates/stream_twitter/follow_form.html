@@ -10,6 +10,7 @@
        <form action="{% if followed %}{% url 'unfollow' one.id %}{% else %}{% url 'follow' %}{% endif %}" method="post">
         {% csrf_token %}
         <input type="hidden" id="id_target" name="target" value="{{one.id}}">
+        <input type="hidden" id="id_user" name="user" value="{{user.id}}">
         <button type="submit" class="btn btn-primary" value="Create" />
         {% if followed %}
           Unfollow
