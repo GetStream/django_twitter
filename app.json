@@ -1,11 +1,11 @@
 {
   "name": "Stream Twitter Example",
-  "description": "Stream is awesome!",
+  "description": "A twitter app built with Stream and Django",
   "repository": "https://github.com/GetStream/django_twitter",
   "logo": "http://33.media.tumblr.com/avatar_be8b5eef9ae6_128.png",
-  "keywords": ["Stream", "Django", "Awesome"],
+  "keywords": ["Stream", "Django", "Twitter"],
   "env": {
-    "DEBUG": "on"
+    "DEBUG": "off"
   },
   "addons": [
     "stream", "heroku-postgresql:hobby-dev", "rollbar"
