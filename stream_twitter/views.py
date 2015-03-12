@@ -105,7 +105,7 @@ def user(request, user_name):
 
 def hashtag(request, hashtag_name):
     hashtag_name = hashtag_name.lower()
-    feed = feed_manager.get_feed('hashtag', hashtag_name)
+    feed = feed_manager.get_feed('user', 'hash_%s' % hashtag_name)
     activities = feed.get(limit=25)['results']
 
     activities = enricher.enrich_activities(activities)

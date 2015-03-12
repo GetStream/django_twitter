@@ -59,7 +59,7 @@ class Tweet(activity.Activity, models.Model):
     def activity_notify(self):
         targets = []
         for hashtag in self.parse_hashtags():
-            targets.append(feed_manager.get_feed('hashtag', hashtag))
+            targets.append(feed_manager.get_feed('user', 'hash_%s' % hashtag))
         for user in self.parse_mentions():
             targets.append(feed_manager.get_news_feeds(user.id)['flat'])
         return targets
