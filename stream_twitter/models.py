@@ -30,10 +30,9 @@ class Tweet(activity.Activity, models.Model):
         for hashtag in hashtag_set:
             # TODO: increment counters in one query
             # Hashtag.objects.filter(or_conditions).update((F('used_amount')+1))
-            h,created = Hashtag.objects.get_or_create(name=hashtag)
+            h, created = Hashtag.objects.get_or_create(name=hashtag)
             h.occurrences += 1
             h.save()
-
 
     def parse_hashtags(self):
         return [slugify(i) for i in self.text.split() if i.startswith("#")]
@@ -46,14 +45,14 @@ class Tweet(activity.Activity, models.Model):
         parts = self.text.split()
         hashtag_counter = 0
         mention_counter = 0
-        result = {u"parsed_text": u"", u"hashtags": [], u"mentions" :[]}
+        result = {u"parsed_text": u"", u"hashtags": [], u"mentions": []}
         for index, value in enumerate(parts):
             if value.startswith("#"):
-                parts[index] = u"{hashtag"+str(hashtag_counter)+u"}"
+                parts[index] = u"{hashtag" + str(hashtag_counter) + u"}"
                 hashtag_counter += 1
                 result[u'hashtags'].append(value)
             if value.startswith("@"):
-                parts[index] = u"{mention"+str(mention_counter)+u"}"
+                parts[index] = u"{mention" + str(mention_counter) + u"}"
                 mention_counter += 1
                 result[u'mentions'].append(value)
         result[u'parsed_text'] = " ".join(parts)
@@ -82,6 +81,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     description = models.TextField()
     picture = models.ImageField(upload_to='profile_pictures', blank=True)
+
 
 class Hashtag(models.Model):
     name = models.CharField(max_length=160)
