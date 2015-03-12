@@ -1,6 +1,6 @@
-#Stream twitter example site
+#Stream Twitter clone
 
-This is a simple scalable twitter type app using 
+This is a simple twitter clone app built with Stream and Django
 [Stream](http://getstream.io)'s API. Please check 
 [this tutorial](http://getstream.io/docs/#tutorials) on how to create this 
 site. For more information on the API, please visit: 
