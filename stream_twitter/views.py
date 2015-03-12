@@ -60,7 +60,7 @@ class DiscoverView(CreateView):
 
     def form_valid(self, form, *args, **kwargs):
         form.instance.user = self.request.user
-        return super(FollowView, self).form_valid(form)
+        return super(DiscoverView, self).form_valid(form)
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
