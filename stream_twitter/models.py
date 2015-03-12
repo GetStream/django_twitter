@@ -45,17 +45,17 @@ class Tweet(activity.Activity, models.Model):
         parts = self.text.split()
         hashtag_counter = 0
         mention_counter = 0
-        result = {u"parsed_text": u"", u"hashtags": [], u"mentions": []}
+        result = {"parsed_text": "", "hashtags": [], "mentions": []}
         for index, value in enumerate(parts):
             if value.startswith("#"):
-                parts[index] = u"{hashtag" + str(hashtag_counter) + u"}"
+                parts[index] = "{hashtag" + str(hashtag_counter) + "}"
                 hashtag_counter += 1
-                result[u'hashtags'].append(value)
+                result["hashtags"].append(value)
             if value.startswith("@"):
-                parts[index] = u"{mention" + str(mention_counter) + u"}"
+                parts[index] = "{mention" + str(mention_counter) + "}"
                 mention_counter += 1
-                result[u'mentions'].append(value)
-        result[u'parsed_text'] = " ".join(parts)
+                result["mentions"].append(value)
+        result["parsed_text"] = " ".join(parts)
         return result
 
     @property
