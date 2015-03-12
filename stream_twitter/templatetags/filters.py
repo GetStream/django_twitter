@@ -22,14 +22,14 @@ def encode_tweet(parsed_tweet_dict):
     # adding html component to hashtags
     for index, value in enumerate(parsed_tweet_dict.get(u'hashtags')):
         result['hashtag'+str(index)] = \
-            u'<span class="hashtag"><a href="{link}">{hashtag}</a></span>'\
+            u'<span class="hashtag"><a href="{link}">#{hashtag}</a></span>'\
                 .format(hashtag=escape(value), link="/hashtag/{0}"\
                     .format(escape(value[1:])))
 
     # adding html component to mentions
     for index, value in enumerate(parsed_tweet_dict.get(u'mentions')):
         result['mention'+str(index)] = \
-            u'<span class="mention"><a href="{link}">{mention}</a></span>'\
+            u'<span class="mention"><a href="{link}">@{mention}</a></span>'\
                 .format(mention=escape(value), link="/user/{0}"\
                     .format(escape(value[1:])))
 
