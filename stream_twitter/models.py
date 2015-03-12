@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import F
 from django.db.models import signals
 from django.template.defaultfilters import slugify
 from stream_django import activity
@@ -7,10 +8,8 @@ from stream_django.feed_manager import feed_manager
 
 
 class Tweet(activity.Activity, models.Model):
-
     user = models.ForeignKey('auth.User')
     text = models.CharField(max_length=160)
-
     created_at = models.DateTimeField(auto_now_add=True)
 
     @property
@@ -28,11 +27,9 @@ class Tweet(activity.Activity, models.Model):
     def create_hashtags(self):
         hashtag_set = set(self.parse_hashtags())
         for hashtag in hashtag_set:
-            # TODO: increment counters in one query
-            # Hashtag.objects.filter(or_conditions).update((F('used_amount')+1))
             h, created = Hashtag.objects.get_or_create(name=hashtag)
-            h.occurrences += 1
             h.save()
+        Hashtag.objects.filter(name__in=hashtag_set).update((F('occurrences')+1))
 
     def parse_hashtags(self):
         return [slugify(i) for i in self.text.split() if i.startswith("#")]
