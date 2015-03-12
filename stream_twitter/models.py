@@ -50,11 +50,11 @@ class Tweet(activity.Activity, models.Model):
             if value.startswith("#"):
                 parts[index] = u"{hashtag" + str(hashtag_counter) + u"}"
                 hashtag_counter += 1
-                result[u'hashtags'].append(value)
+                result[u'hashtags'].append(slugify(value))
             if value.startswith("@"):
                 parts[index] = u"{mention" + str(mention_counter) + u"}"
                 mention_counter += 1
-                result[u'mentions'].append(value)
+                result[u'mentions'].append(slugify(value))
         result[u'parsed_text'] = " ".join(parts)
         return result
 
