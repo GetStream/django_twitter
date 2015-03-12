@@ -11,6 +11,9 @@ from stream_twitter.models import Tweet, Hashtag
 from pytutorial import settings
 
 
+enricher = Enrich()
+
+
 class TimelineView(CreateView):
     model = Tweet
     fields = ['text']
@@ -21,9 +24,8 @@ class TimelineView(CreateView):
         return super(TimelineView, self).form_valid(form)
 
     def get(self, request):
-        enricher = Enrich()
         feeds = feed_manager.get_news_feeds(request.user.id)
-        activities = feeds.get('flat').get()[u'results']
+        activities = feeds.get('flat').get()['results']
         activities = enricher.enrich_activities(activities)
         hashtags = Hashtag.objects.order_by('-occurrences')
         context = {
@@ -36,6 +38,7 @@ class TimelineView(CreateView):
 
 
 class DiscoverView(CreateView):
+    #TODO: Remove post method, allow this view to destroy as well
     model = Follow
     fields = ['target']
     success_url = "/timeline/"
@@ -79,9 +82,9 @@ class HomeView(CreateView):
     greeting = "Welcome to Stream Twitter"
 
     def get(self, request):
-
         if not request.user.is_authenticated() and not settings.USE_AUTH:
             # hack to log you in automatically for the demo app
+            # #TODO: move username and password to settings
             admin_user = authenticate(
                 username='theRealAlbert', password='1234')
             auth_login(request, admin_user)
@@ -95,10 +98,9 @@ class HomeView(CreateView):
 
 
 def user(request, user_name):
-    enricher = Enrich()
     user = get_object_or_404(User, username=user_name)
     feeds = feed_manager.get_user_feed(user.id)
-    activities = feeds.get()[u'results']
+    activities = feeds.get()['results']
     activities = enricher.enrich_activities(activities)
     context = {
         'activities': activities,
@@ -109,8 +111,6 @@ def user(request, user_name):
 
 
 def hashtag(request, hashtag_name):
-    enricher = Enrich()
-
     hashtag_name = hashtag_name.lower()
     feed = feed_manager.get_feed('hashtag', hashtag_name)
     activities = feed.get(limit=25)['results']
