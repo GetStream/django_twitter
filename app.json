@@ -1,7 +1,7 @@
 {
   "name": "Stream Twitter Example",
   "description": "Stream is awesome!",
-  "repository": "https://github.com/tbarbugli/stream_twitter",
+  "repository": "https://github.com/GetStream/django_twitter",
   "logo": "http://33.media.tumblr.com/avatar_be8b5eef9ae6_128.png",
   "keywords": ["Stream", "Django", "Awesome"],
   "env": {

@@ -6,4 +6,4 @@ This is a simple scalable twitter type app using
 site. For more information on the API, please visit: 
 [http://getstream.io/docs/](http://getstream.io/docs/)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/tbarbugli/stream_twitter)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
