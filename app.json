@@ -1,14 +1,16 @@
 {
   "name": "Stream Twitter Example",
   "description": "A twitter app built with Stream and Django",
+  "keywords": [
+    "getstream.io",
+    "django"
+  ],
+  "website": "https://getstream.io/",
   "repository": "https://github.com/GetStream/django_twitter",
   "logo": "http://33.media.tumblr.com/avatar_be8b5eef9ae6_128.png",
-  "keywords": ["Stream", "Django", "Twitter"],
-  "env": {
-    "DEBUG": "off"
-  },
+  "success_url": "/",
   "addons": [
-    "stream", "heroku-postgresql:hobby-dev", "rollbar"
+    "stream", "heroku-postgresql"
   ],
   "scripts": {
     "postdeploy": "python manage.py after_deploy"
