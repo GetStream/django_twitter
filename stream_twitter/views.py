@@ -58,7 +58,7 @@ class HomeView(CreateView):
 def follow(request):
     form = FollowForm(request.POST)
     if form.is_valid():
-        follow = form.instance()
+        follow = form.instance
         follow.user = request.user
         follow.save()
     return redirect("/timeline/")
