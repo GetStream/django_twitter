@@ -21,7 +21,14 @@
     </div>
   </div>
 
-  <div class="row">
+  {% if not request.user.is_authenticated %}
+    <div class="row signup">
+      <p>
+        <a href="/accounts/github/login/?process=login" role="button" class="btn btn-primary btn-lg"><i class="icon icon-github"></i> Sign in with GitHub</a>
+      </p>
+    </div>
+  {% endif %}
+  <div class="row{% if not request.user.is_authenticated %} deactivated{% endif %}">
     {% for user in users %}
       <div class="col-md-3 col-xs-6">
         <div class="user home-users">
