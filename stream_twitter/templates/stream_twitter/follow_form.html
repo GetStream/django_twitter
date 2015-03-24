@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     {% for one, followed in following %}
-    <div class="col-md-3 col-xs-6">
+    <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="user">
       {% include "stream_twitter/_user.html" with user=one %}
       <div class="follow-button">
@@ -23,9 +23,9 @@
       </div>
     </div>
     {% if forloop.counter|divisibleby:'4' %}
-    <div class="clearfix visible-md-block visible-lg-block"></div>
+    <div class="clearfix visible-sm-block visible-md-block visible-lg-block"></div>
     {% elif forloop.counter|divisibleby:'2' %}
-    <div class="clearfix visible-sm-block visible-xs-block"></div>
+    <div class="clearfix visible-sm-block"></div>
     {% endif %}
   {% endfor %}
   </div>
