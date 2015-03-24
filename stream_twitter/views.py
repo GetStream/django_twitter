@@ -50,7 +50,7 @@ class HomeView(CreateView):
         context_dict = {
             'greeting': self.greeting,
             'login_user': request.user,
-            'users': User.objects.order_by('-date_joined')
+            'users': User.objects.order_by('-date_joined')[:50]
         }
         return render_to_response('stream_twitter/home.html', context_dict, context)
 
@@ -72,7 +72,7 @@ def unfollow(request, target_id):
 
 
 def discover(request):
-    users = User.objects.order_by('date_joined')
+    users = User.objects.order_by('date_joined')[:50]
     login_user = User.objects.get(username=request.user)
     following = []
     for i in users:
