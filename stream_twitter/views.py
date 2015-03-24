@@ -42,6 +42,7 @@ class HomeView(CreateView):
     greeting = "Welcome to Stream Twitter"
 
     def get(self, request):
+        # import pdb;pdb.set_trace()
         if not request.user.is_authenticated() and not settings.USE_AUTH:
             admin_user = authenticate(
                 username=settings.DEMO_USERNAME, password=settings.DEMO_PASSWORD)

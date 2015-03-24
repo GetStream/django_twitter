@@ -19,17 +19,29 @@
         <li>
           <a href="/discover/">Discover</a>
         </li>
-        {% if login_user.is_authenticated and login_user %}
-        <li>
-          <a href="/user/{{ login_user }}">Profile</a>
-        </li>
-       <!--  <li>
-          <a href="/accounts/logout/">Log out</a>
-        </li>
-        {# {% else %} #}
-        <li>
-          <a href="/accounts/login/">Log in</a>
-        </li> -->
+        {% if request.user.is_authenticated %}
+<!--             <li class="dropdown" id="notification-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="notification-toggle">
+                    <i class="glyphicon glyphicon-inbox"></i>  <span class="badge notifications-badge text-danger" id="notifications_inner" style="display:none;">0</span><b class="caret"></b>
+                </a>
+                <ul id="notification-container" class="dropdown-menu">
+                </ul>
+            </li> -->
+            <li class="dropdown{% if location == 'profile' %} active{% endif %}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon"></i>  {{ user.username }}<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/user/{{ login_user }}">My Profile</a></li>
+                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                </ul>
+            </li>
+        {% else %}
+            <li>
+                <a href="/accounts/github/login/?process=login">
+                    <i class="icon icon-github"></i> Sign in with GitHub
+                </a>
+            </li>
         {% endif %}
         </ul>
     </div>

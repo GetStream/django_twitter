@@ -36,6 +36,11 @@ FIXTURE_DIRS = (
     os.path.join(BASE_DIR, "fixtures")
 )
 
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
+)
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -45,6 +50,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
     'stream_twitter',
     'stream_django',
     'pytutorial',
@@ -58,6 +68,20 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    # allauth specific context processors
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
 )
 
 ROOT_URLCONF = 'pytutorial.urls'
@@ -100,9 +124,20 @@ TEMPLATE_DIRS = (
 
 STREAM_NEWS_FEEDS = dict(flat='flat')
 
-LOGIN_URL = '/accounts/login'
-LOGIN_REDIRECT_URL = 'tweet'
+LOGIN_URL = ''
 USE_AUTH = bool(os.environ.get('USE_AUTH'))
+ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_VERIFICATION = "none"
+SITE_ID = int(os.environ.get('SITE_ID', 1))
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_EMAIL_REQUIRED = False
+SOCIALACCOUNT_EMAIL_REQUIRED = False
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+
 DEMO_USERNAME = 'theRealAlbert'
 DEMO_PASSWORD = '1234'
 
@@ -111,7 +146,7 @@ AUTH_PROFILE_MODULE = 'stream_twitter.UserProfile'
 # add your api keys from https://getstream.io/dashboard/
 # you do not need this if you are running on Heroku
 # and using getstream add-on
-STREAM_API_KEY = ''
-STREAM_API_SECRET = ''
+# STREAM_API_KEY = '1'
+# STREAM_API_SECRET = '1'
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

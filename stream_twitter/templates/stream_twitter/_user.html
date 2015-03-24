@@ -1,7 +1,14 @@
+{% load socialaccount %}
+{% get_social_accounts user as accounts %}
+
 <div class="user">
   <div class="user-picture">
     <a href="/user/{{ user.username }}/">
-    <img class="profile-picture img-responsive" alt="Responsive image" class="user-picture" src="{{ user.userprofile.picture.url }}">
+    {% if accounts %}
+      <img class="profile-picture img-responsive" alt="Responsive image" class="user-picture" src="{{ accounts.github.0.extra_data.avatar_url }}">
+    {% else %}
+      <img class="profile-picture img-responsive" alt="Responsive image" class="user-picture" src="{{ user.userprofile.picture.url }}">
+    {% endif %}
     </a>
   </div>
   <div class="user-basic-info">
