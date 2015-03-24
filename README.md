@@ -6,6 +6,10 @@ This is a simple twitter clone app built with [Stream](http://getstream.io)'s AP
 
 This application is based on the [Build a scalable Twitter clone with Django and GetStream.io](https://gist.github.com/tbarbugli/97bf26f400ecf1443ef6) tutorial.
 
+### Live Demo
+
+You can see a live demo of this application [here](http://tw.getstream.io/).
+
 ### Heroku
 
 The best way to try this application is via Heroku; you can deploy this example (for free) on Heroku
