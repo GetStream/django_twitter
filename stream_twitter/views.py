@@ -42,7 +42,6 @@ class HomeView(CreateView):
     greeting = "Welcome to Stream Twitter"
 
     def get(self, request):
-        # import pdb;pdb.set_trace()
         if not request.user.is_authenticated() and not settings.USE_AUTH:
             admin_user = authenticate(
                 username=settings.DEMO_USERNAME, password=settings.DEMO_PASSWORD)
@@ -73,7 +72,7 @@ def unfollow(request, target_id):
 
 
 def discover(request):
-    users = User.objects.order_by('-date_joined')
+    users = User.objects.order_by('date_joined')
     login_user = User.objects.get(username=request.user)
     following = []
     for i in users:
