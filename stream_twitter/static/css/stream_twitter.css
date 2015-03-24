@@ -27,6 +27,12 @@ span.mention {
     font-weight: bold;
 }
 
+span.time-tweeted {
+    font-size: 12px;
+    color: #AAA;
+    font-family: Helvetica;
+}
+
 div.user-name {
     font-size: 18px;
     font-weight: bold;
