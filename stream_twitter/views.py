@@ -50,7 +50,7 @@ class HomeView(CreateView):
         context_dict = {
             'greeting': self.greeting,
             'login_user': request.user,
-            'users': User.objects.order_by('-date_joined')[:50]
+            'users': User.objects.order_by('date_joined')[:50]
         }
         return render_to_response('stream_twitter/home.html', context_dict, context)
 
