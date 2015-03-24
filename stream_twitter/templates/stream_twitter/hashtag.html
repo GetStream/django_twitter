@@ -12,13 +12,17 @@
         </span>
         :</h2>
       </div>
+    </div>
   </div>
-
-      {% for i in activities %}
-      <div class="col-sm-6">
+  <div class="row">
+    {% for i in activities %}
+      <div class="col-md-6">
         {% render_activity i %}
       </div>
-      {% endfor %}
+      {% elif forloop.counter|divisibleby:'2' %}
+      <div class="clearfix visible-md-block visible-lg-block"></div>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 
