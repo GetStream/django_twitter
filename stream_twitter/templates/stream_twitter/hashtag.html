@@ -19,7 +19,7 @@
       <div class="col-md-6">
         {% render_activity i %}
       </div>
-      {% elif forloop.counter|divisibleby:'2' %}
+      {% if forloop.counter|divisibleby:'2' %}
       <div class="clearfix visible-md-block visible-lg-block"></div>
       {% endif %}
     {% endfor %}
