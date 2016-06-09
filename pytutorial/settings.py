@@ -122,7 +122,7 @@ TEMPLATE_DIRS = (
     TEMPLATE_PATH,
 )
 
-STREAM_NEWS_FEEDS = dict(flat='flat')
+STREAM_NEWS_FEEDS = dict(timeline='timeline')
 
 LOGIN_URL = '/'
 USE_AUTH = bool(os.environ.get('USE_AUTH'))

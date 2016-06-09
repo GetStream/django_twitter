@@ -26,7 +26,7 @@ class TimelineView(CreateView):
 
     def get(self, request):
         feeds = feed_manager.get_news_feeds(request.user.id)
-        activities = feeds.get('flat').get()['results']
+        activities = feeds.get('timeline').get()['results']
         activities = enricher.enrich_activities(activities)
         hashtags = Hashtag.objects.order_by('-occurrences')
         context = {
