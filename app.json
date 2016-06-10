@@ -12,11 +12,6 @@
   "addons": [
     "stream", "heroku-postgresql"
   ],
-  "env":{
-    "DISABLE_COLLECTSTATIC": {
-      "value": "1"
-    }
-  },
   "scripts": {
     "postdeploy": "python manage.py after_deploy"
   }
