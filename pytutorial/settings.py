@@ -13,7 +13,6 @@ import os
 import dj_database_url
 
 BASE_DIR = os.path.dirname(__file__)
-TEMPLATE_PATH = os.path.join(BASE_DIR, "templates")
 
 BASE_ROOT = os.path.abspath(os.path.join(os.path.split(__file__)[0], '..'))
 STATIC_ROOT = os.path.join(BASE_ROOT, 'static/')
@@ -28,13 +27,8 @@ SECRET_KEY = '*m&(&5!c^7j^7s$33u(bt567k!q0)@&p1io_w($ec+g66zr!0@'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = os.environ.get("DEBUG", "off") == "on"
-TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
-
-FIXTURE_DIRS = (
-    os.path.join(BASE_DIR, "fixtures")
-)
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
@@ -70,19 +64,25 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.request',
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    # allauth specific context processors
-    "allauth.account.context_processors.account",
-    "allauth.socialaccount.context_processors.socialaccount",
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': os.path.join(BASE_DIR, "templates"),
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.core.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.core.context_processors.debug',
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
+                'django.core.context_processors.tz',
+                'django.contrib.messages.context_processors.messages'
+            ],
+        },
+    },
+]
 
 ROOT_URLCONF = 'pytutorial.urls'
 
@@ -118,10 +118,6 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 
-TEMPLATE_DIRS = (
-    TEMPLATE_PATH,
-)
-
 STREAM_NEWS_FEEDS = dict(timeline='timeline')
 
 LOGIN_URL = '/'
@@ -146,8 +142,8 @@ AUTH_PROFILE_MODULE = 'stream_twitter.UserProfile'
 # add your api keys from https://getstream.io/dashboard/
 # you do not need this if you are running on Heroku
 # and using getstream add-on
-# STREAM_API_KEY = '1'
-# STREAM_API_SECRET = '1'
+STREAM_API_KEY = '1'
+STREAM_API_SECRET = '1'
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
