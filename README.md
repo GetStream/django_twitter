@@ -38,3 +38,13 @@ STREAM_API_SECRET = 'my_api_secret'
 ```
 python manage.py after_deploy
 ```
+
+**Collect static files (javascript/css)**
+```
+python manage.py collectstatic
+```
+
+**Start the webserver**
+```
+python manage.py runserver
+```
