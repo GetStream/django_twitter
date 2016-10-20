@@ -142,8 +142,8 @@ AUTH_PROFILE_MODULE = 'stream_twitter.UserProfile'
 # add your api keys from https://getstream.io/dashboard/
 # you do not need this if you are running on Heroku
 # and using getstream add-on
-STREAM_API_KEY = '1'
-STREAM_API_SECRET = '1'
+STREAM_API_KEY = ''
+STREAM_API_SECRET = ''
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
