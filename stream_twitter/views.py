@@ -1,9 +1,7 @@
 from django.views.generic.edit import CreateView
-from django.shortcuts import render_to_response, render, get_object_or_404,\
-    redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
-from django.template.context import RequestContext
 from stream_django.enrich import Enrich
 from stream_django.feed_manager import feed_manager
 from stream_twitter.forms import FollowForm
@@ -46,13 +44,12 @@ class HomeView(CreateView):
             admin_user = authenticate(
                 username=settings.DEMO_USERNAME, password=settings.DEMO_PASSWORD)
             auth_login(request, admin_user)
-        context = RequestContext(request)
-        context_dict = {
+        context = {
             'greeting': self.greeting,
             'login_user': request.user,
             'users': User.objects.order_by('date_joined')[:50]
         }
-        return render_to_response('stream_twitter/home.html', context_dict, context)
+        return render(request, 'stream_twitter/home.html', context)
 
 
 def follow(request):
