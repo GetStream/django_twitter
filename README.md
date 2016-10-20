@@ -26,11 +26,16 @@ If you prefer to run this locally then make sure to signup for GetStream's servi
 pip install -r requirements.txt
 ```
 
-**Add your API keys to settings.py**
+**Add your API keys to pytutorial/settings.py**
 
 ```python
 STREAM_API_KEY = 'my_api_key'
 STREAM_API_SECRET = 'my_api_secret'
+```
+
+**Run server in debug mode pytutorial/settings.py**
+```python
+DEBUG = True
 ```
 
 **Setup your database and the demo data:**
