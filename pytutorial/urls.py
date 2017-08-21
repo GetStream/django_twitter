@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from stream_twitter import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
-
+from django.views.generic import TemplateView
 
 urlpatterns = patterns('',
   url(r'^accounts/', include('allauth.urls')),
@@ -16,7 +16,12 @@ urlpatterns = patterns('',
   url(r'^hashtag/(?P<hashtag_name>.+)/', views.hashtag),
   url(r'^$', views.HomeView.as_view()),
   url(r'^follow/$', login_required(views.follow), name='follow'),
-  url(r'^unfollow/(?P<target_id>\d+)/$', login_required(views.unfollow), name='unfollow')
+  url(r'^unfollow/(?P<target_id>\d+)/$',
+      login_required(views.unfollow),
+      name='unfollow'),
+  url(r'^robots.txt$', TemplateView.as_view(
+      template_name='stream_twitter/robots.txt',
+      content_type="text/plain"))
 )
 
 urlpatterns += staticfiles_urlpatterns()
