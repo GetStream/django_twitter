@@ -7,9 +7,11 @@ from django.conf import settings
 from django.views.generic import TemplateView
 from django.views.static import serve
 
+# from allauth.account import urls as allauthurls
+
 urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^discover/', login_required(views.discover)),
     url(r'^timeline/',
         login_required(views.TimelineView.as_view())),

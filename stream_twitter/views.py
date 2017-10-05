@@ -40,7 +40,7 @@ class HomeView(CreateView):
     greeting = "Welcome to Stream Twitter"
 
     def get(self, request):
-        if not request.user.is_authenticated() and not settings.USE_AUTH:
+        if not request.user.is_authenticated and not settings.USE_AUTH:
             admin_user = authenticate(
                 username=settings.DEMO_USERNAME, password=settings.DEMO_PASSWORD)
             auth_login(request, admin_user)
