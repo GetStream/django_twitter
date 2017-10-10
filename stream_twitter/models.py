@@ -6,9 +6,13 @@ from django.template.defaultfilters import slugify
 from stream_django import activity
 from stream_django.feed_manager import feed_manager
 
+def get_sentinel_user():
+    return get_user_model().objects.get_or_create(username='deleted')[0]
+
 
 class Tweet(activity.Activity, models.Model):
-    user = models.ForeignKey('auth.User')
+    user = models.ForeignKey(
+        'auth.User', on_delete=models.SET(get_sentinel_user))
     text = models.CharField(max_length=160)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -66,8 +70,10 @@ class Tweet(activity.Activity, models.Model):
 
 
 class Follow(models.Model):
-    user = models.ForeignKey('auth.User', related_name='friends')
-    target = models.ForeignKey('auth.User', related_name='followers')
+    user = models.ForeignKey(
+        'auth.User', related_name='friends', on_delete=models.CASCADE)
+    target = models.ForeignKey(
+        'auth.User', related_name='followers', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -75,7 +81,7 @@ class Follow(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.SET(get_sentinel_user))
     description = models.TextField()
     picture = models.ImageField(upload_to='profile_pictures', blank=True)
 
