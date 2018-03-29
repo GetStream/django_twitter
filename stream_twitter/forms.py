@@ -1,8 +1,8 @@
-from django.forms import ModelForm
-from stream_twitter.models import Follow
+from django import forms
+from stream_twitter.models import Follow, Tweet
 
 
-class FollowForm(ModelForm):
+class FollowForm(forms.ModelForm):
 
     class Meta:
         exclude = set()

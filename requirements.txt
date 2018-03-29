@@ -1,5 +1,4 @@
-dj-database-url==0.4.2
-Django==2.0.0
+Django==2.0.3
 gnureadline==6.3.3
 gunicorn==19.7.1
 Pillow==4.3.0
