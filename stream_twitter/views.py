@@ -73,7 +73,7 @@ class UnfollowView(DeleteView):
 
     def get_object(self):
         target_id = self.kwargs['target_id']
-        return self.get_queryset().get(target__id=target_id)
+        return self.get_queryset().get(target__id=target_id, user=self.request.user)
 
 
 class DiscoverView(TemplateView):
