@@ -26,7 +26,8 @@ SECRET_KEY = '*m&(&5!c^7j^7s$33u(bt567k!q0)@&p1io_w($ec+g66zr!0@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = os.environ.get("DEBUG", "off") == "on"
+#DEBUG = os.environ.get("DEBUG", "off") == "on"
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -141,8 +142,8 @@ AUTH_PROFILE_MODULE = 'stream_twitter.UserProfile'
 # add your api keys from https://getstream.io/dashboard/
 # you do not need this if you are running on Heroku
 # and using getstream add-on
-STREAM_API_KEY = ''
-STREAM_API_SECRET = ''
+STREAM_API_KEY = 'khbkvajb8hwa'
+STREAM_API_SECRET = '5fuq38b6pjzxaaeprtcrupugvfzuknxkgzdqvz59ufctgbvterqahr99dmrj9svu'
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
